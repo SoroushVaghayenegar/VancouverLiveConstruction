@@ -1,7 +1,20 @@
 <div class="center jumbotron">
 	<% if logged_in? %>
-		<h1>YOU ARE LOGGED IN!</h1>
+		<div style='width: 800px;'>
+  			<div id="map" style='width: 1000px; height: 400px;'>
+  				<script>
+  				var vanCenter = new google.maps.LatLng(49.259209,-123.130437);
+  				handler = Gmaps.build('Google');
+				handler.buildMap({ provider: {  center: vanCenter ,   zoom: 12}, internal: {id: 'map'}}, function(){
+				  
+				  handler.bounds.extendWith(markers);
+				  handler.fitMapToBounds();
+				});
+				</script>
+  			</div>
+		</div>
 
+		<br/>
 		<% if current_user.admin? %>
 			<%= link_to "LOAD THE DATA!", '#', class: "btn btn-lg btn-primary" %>
 		<% end %>

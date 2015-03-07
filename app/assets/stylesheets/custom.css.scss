@@ -187,3 +187,12 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+/* Bootstrap Css Map Fix*/
+#map-container #map-canvas img {
+  max-width: none;
+}
+/* Bootstrap Css Map Fix*/
+#map-container #map-canvas label {
+  width: auto; display:inline;
+}

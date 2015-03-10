@@ -22,4 +22,21 @@ module WelcomeHelper
     end
 
   end
+
+  def retrieve_all(type)
+
+    construct_array = []
+    if (type != "")
+      case type
+        when "In Progress"
+          construct_array = IpConstruction.all
+        when "Upcoming Project"
+          construct_array = UpConstruction.all
+        when "Road Closure"
+          construct_array = RcConstruction.all
+      end
+    end
+    return construct_array
+
+  end
 end

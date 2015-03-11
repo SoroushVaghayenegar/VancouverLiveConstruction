@@ -39,4 +39,38 @@ module WelcomeHelper
     return construct_array
 
   end
+
+  def delete_IPConstr(c_id)
+
+    if ((c_id != "") & !(IpConstruction.where(:c_id => c_id).blank?))
+      IpConstruction.destroy_all(:c_id => c_id)
+      @message = "Success"
+    else
+      @message = "The construction has not been found"
+    end
+
+  end
+
+  def delete_UPConstr(c_id)
+
+    if ((c_id != "") & !(UpConstruction.where(:c_id => c_id).blank?))
+      UpConstruction.destroy_all(:c_id => c_id)
+      @message = "Success"
+    else
+      @message = "The construction has not been found"
+    end
+
+  end
+
+  def delete_RCConstr(c_id)
+
+    if ((c_id != "") & !(RcConstruction.where(:c_id => c_id).blank?))
+      RcConstruction.destroy_all(:c_id => c_id)
+      @message = "Success"
+    else
+      @message = "The construction has not been found"
+    end
+
+  end
+
 end

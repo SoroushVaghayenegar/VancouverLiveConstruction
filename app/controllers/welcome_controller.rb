@@ -2,35 +2,28 @@ class WelcomeController < ApplicationController
   require 'net/http'
   require 'open-uri'
   require 'zip'
+  require 'feedjira'
+  require 'nokogiri'
+
+  include WelcomeHelper
+  helper :all
+
   def index
   end
-  
-  
+
   def update
-    file = open('http://data.vancouver.ca/download/kml/kml_road_ahead.zip', 'rb')
-    @contents = file.read
-    @unzip = unzip_file(file)
+    reset_db
+    file = "http://vanmapp2.vancouver.ca/georss/roadahead_georss.xml"
+    retrieve_and_store(file)
   end
-  
-  def unzip_file (file)
-     Zip::File.open(file) do |zippedfile|
-      zippedfile.each do |unzipfile|
-      end
+
+  def retrieve_and_store (file)
+
+    @message = " "
+    xml = Nokogiri::XML(open(file))
+    xml.css('entry').each do |d|
+      add_constr(d.css('category').first.attribute('term').text, d.at_css('id').text, d.at_css('title').text, d.at_css('content').text, d.at_css('link').attribute('href').text, d.at_css('published').text, d.at_css('updated').text, d.at_xpath('//georss:line').text)
     end
   end
 
-  
-
-  
-  # def unzip_file (file, destination)
-  #   Zip::ZipFile.open(file_path) { |zip_file|
-  #       zip_file.each { |f|
-  #           f_path=File.join("destination_path", f.name)
-  #           FileUtils.mkdir_p(File.dirname(f_path))
-  #           zip_file.extract(f, f_path) unless File.exist?(f_path)
-  #       }
-  #   }
-  # end
-    
-  
 end

@@ -44,3 +44,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rubyzip', '~> 1.1.7'
+gem 'feedjira'
+gem 'nokogiri'

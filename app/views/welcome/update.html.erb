@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+  <% k = retrieve_all("In Process") %>
+  <h1>In Process Constructions:</h1><br>
+  <% k.each do |d| %>
+      <h4><%= d.title %></h4>
+      <%= "Description: " + d.description + "\n" %><br>
+      <%= "ID: " + d.c_id + "\n" %><br>
+      <%= "Link: " + d.link + "\n" %><br>
+      <%= "Published: " + d.published.to_s + "\n" %><br>
+      <%= "Updates: " + d.updated.to_s + "\n" %><br>
+      <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br><br>
+  <% end %>
+
+  <% k = retrieve_all("Upcoming Project") %><br>
+  <h1>Upcoming Project Constructions:</h1>
+  <% k.each do |d| %>
+      <h4><%= d.title %></h4>
+      <%= "Description: " + d.description + "\n" %><br>
+      <%= "ID: " + d.c_id + "\n" %><br>
+      <%= "Link: " + d.link + "\n" %><br>
+      <%= "Published: " + d.published.to_s + "\n" %><br>
+      <%= "Updates: " + d.updated.to_s + "\n" %><br>
+      <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br><br>
+  <% end %>
+
+  <% k = retrieve_all("Road Closure") %><br>
+  <h1>Road Closure Constructions:</h1>
+  <% k.each do |d| %>
+      <h4><%= d.title %></h4>
+      <%= "Description: " + d.description + "\n" %><br>
+      <%= "ID: " + d.c_id + "\n" %><br>
+      <%= "Link: " + d.link + "\n" %><br>
+      <%= "Published: " + d.published.to_s + "\n" %><br>
+      <%= "Updates: " + d.updated.to_s + "\n" %><br>
+      <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br><br>
+  <% end %>
+</head>
+<body>
+
+</body>
+</html>

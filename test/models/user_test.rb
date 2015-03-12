@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   
   def setup
-  	@user = User.new(name: "Soroush" , username: "test1",
+  	@user = User.new(name: "Soroush" , username: "test",
   					 password: "123", password_confirmation: "123")
   end
 
@@ -33,9 +33,17 @@ class UserTest < ActiveSupport::TestCase
 
   test "Username should be unique" do 
   	duplicate_user = @user.dup
-  	duplicate_user.email = @user.email.upcase 
+  	duplicate_user.username = @user.username.upcase 
   	@user.save
   	assert_not duplicate_user.valid?
   end
 
+  test "password should have a minimum length" do
+    @user.password = @user.password_confirmation = "a" * 2
+    assert_not @user.valid?
+  end
+
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
 end

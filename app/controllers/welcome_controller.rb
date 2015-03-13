@@ -27,10 +27,13 @@ class WelcomeController < ApplicationController
 
   def retrieve_and_store (file)
 
-    @message = " "
+    counter = 0
+    georss_coord = nil
     xml = Nokogiri::XML(open(file))
     xml.css('entry').each do |d|
-      add_constr(d.css('category').first.attribute('term').text, d.at_css('id').text, d.at_css('title').text, d.at_css('content').text, d.at_css('link').attribute('href').text, d.at_css('published').text, d.at_css('updated').text, d.at_xpath('//georss:line').text)
+      georss_coord = xml.at_css('entry').xpath('//georss:line')[counter].text
+      add_constr(d.css('category').first.attribute('term').text, d.at_css('id').text, d.at_css('title').text, d.at_css('content').text, d.at_css('link').attribute('href').text, d.at_css('published').text, d.at_css('updated').text,georss_coord)
+      counter += 1
     end
   end
 

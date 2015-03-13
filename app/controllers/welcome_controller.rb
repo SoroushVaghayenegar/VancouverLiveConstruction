@@ -2,7 +2,6 @@ class WelcomeController < ApplicationController
   require 'net/http'
   require 'open-uri'
   require 'zip'
-  require 'feedjira'
   require 'nokogiri'
 
   include WelcomeHelper

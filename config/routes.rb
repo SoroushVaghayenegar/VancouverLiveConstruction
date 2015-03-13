@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get    'welcome' => 'welcome#index' #HOME
+  get 'update' => 'welcome#update'
   get    'help'    => 'welcome#help'
   get    'about'   => 'welcome#about'
   get    'signup'  => 'users#new'
@@ -12,6 +13,5 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :users, :ipconstructions, :upconstructions, :rcconstructions
-  get 'update' => 'welcome#update'
 
 end

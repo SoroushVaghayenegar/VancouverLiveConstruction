@@ -17,7 +17,7 @@
 
 		<br/>
 		<% if current_user.admin? %>
-			<%= link_to "LOAD THE DATA!", '#', class: "btn btn-lg btn-primary", update_path%>
+			<%= link_to "LOAD THE DATA!", update_path, class: "btn btn-lg btn-primary"%>
 		<% end %>
 	<% else %>
 	<h1>Welcome to Vancouver Construction Map</h1>

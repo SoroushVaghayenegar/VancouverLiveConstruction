@@ -88,15 +88,15 @@ module WelcomeHelper
     case type
       when "In Process"
         data.each do |d|
-          IpConstruction.destroy_all(d.id)
+          IpConstruction.destroy_all(:id => d.id)
         end
       when "Upcoming Project"
         data.each do |d|
-          UpConstruction.destroy_all(d.id)
+          UpConstruction.destroy_all(:id => d.id)
         end
       when "Road Closure"
         data.each do |d|
-          RcConstruction.destroy_all(d.id)
+          RcConstruction.destroy_all(:id => d.id)
         end
     end
   end

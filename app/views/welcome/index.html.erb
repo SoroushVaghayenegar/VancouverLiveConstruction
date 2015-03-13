@@ -1,6 +1,31 @@
-<h1>Welcome to Vancouver Construction Map</h1>
-<p>Sign in</p>
-<p>Sign up</p>
+
+<div class="center jumbotron">
+	<% if logged_in? %>
+		<div style='width: 800px;'>
+  			<div id="map" style='width: 1000px; height: 400px;'>
+  				<script>
+  				var vanCenter = new google.maps.LatLng(49.259209,-123.130437);
+  				handler = Gmaps.build('Google');
+				handler.buildMap({ provider: {  center: vanCenter ,   zoom: 12}, internal: {id: 'map'}}, function(){
+				  
+				  handler.bounds.extendWith(markers);
+				  handler.fitMapToBounds();
+				});
+				</script>
+  			</div>
+		</div>
+
+		<br/>
+		<% if current_user.admin? %>
+			<%= link_to "LOAD THE DATA!", update_path, class: "btn btn-lg btn-primary"%>
+		<% end %>
+	<% else %>
+	<h1>Welcome to Vancouver Construction Map</h1>
+	<p> Don't have an account? </p>
+	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+	<% end %>
+</div>
 
 
-<%= link_to "Update", update_path%>
+
+

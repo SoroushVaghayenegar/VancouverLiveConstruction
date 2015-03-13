@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-  
-  get 'welcome/index'
+
+  get 'sessions/new'
 
   root 'welcome#index'
 
-  resources :ipconstructions, :upconstructions, :rcconstructions
+  get    'welcome' => 'welcome#index' #HOME
   get 'update' => 'welcome#update'
+  get    'help'    => 'welcome#help'
+  get    'about'   => 'welcome#about'
+  get    'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  resources :users, :ipconstructions, :upconstructions, :rcconstructions
 
 end

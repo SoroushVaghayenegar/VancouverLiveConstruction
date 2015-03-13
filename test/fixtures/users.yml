@@ -1,0 +1,10 @@
+soroush:
+  name: soroush
+  username: test1
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+test2:
+  name: soroush	
+  username: test2
+  password_digest: <%= User.digest('password') %>

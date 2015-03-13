@@ -11,6 +11,14 @@ class WelcomeController < ApplicationController
   def index
   end
 
+  def help
+  end
+  
+  def about
+
+  end
+
+
   def update
     reset_db
     file = "http://vanmapp2.vancouver.ca/georss/roadahead_georss.xml"

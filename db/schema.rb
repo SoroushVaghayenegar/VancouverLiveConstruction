@@ -25,4 +25,40 @@ ActiveRecord::Schema.define(version: 20150307091421) do
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
+  create_table "ip_constructions", force: :cascade do |t|
+    t.string   "c_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "link"
+    t.datetime "published"
+    t.datetime "updated"
+    t.text     "coord"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "rc_constructions", force: :cascade do |t|
+    t.string   "c_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "link"
+    t.datetime "published"
+    t.datetime "updated"
+    t.text     "coord"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "up_constructions", force: :cascade do |t|
+    t.string   "c_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "link"
+    t.datetime "published"
+    t.datetime "updated"
+    t.text     "coord"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
 end

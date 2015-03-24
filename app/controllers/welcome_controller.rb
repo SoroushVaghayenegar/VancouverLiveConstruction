@@ -10,7 +10,8 @@ class WelcomeController < ApplicationController
   def index
   end
 
-  def help
+  def map
+    @OGs = IpConstruction.all
   end
   
   def about

@@ -1,0 +1,48 @@
+<div class="center jumbotron"style='width: 800px;'>
+	<div id="map" style='width: 800px; height: 400px;'>
+		<script>
+		var vanCenter = new google.maps.LatLng(49.259209,-123.130437);
+		handler = Gmaps.build('Google');
+		handler.buildMap({ provider: {  center: vanCenter ,   zoom: 12}, internal: {id: 'map'}}, function(){
+	  		refresh()
+	  	document.getElementById('RC').onclick = function() {
+	  		if (this.checked)
+	  			handler.addKml({url:"https://drive.google.com/uc?export=download&id=0B2Gjc0uQJV7pcXFJVTk1N2VlaTQ"})
+	  		else
+	  			refresh()
+	  	}
+
+	  	document.getElementById('OG').onclick = function() {
+	  		if (this.checked)
+	  			handler.addKml({url:"https://drive.google.com/uc?export=download&id=0B2Gjc0uQJV7pZXBwWjc3QVBiZFk"})
+	  		else
+	  			refresh()
+	  	}
+
+	  	document.getElementById('FC').onclick = function() {
+	  		if (this.checked)
+	  			handler.addKml({url:"https://drive.google.com/uc?export=download&id=0B2Gjc0uQJV7pUGI1ZVZPTERqRmc"})
+	  		else
+	  			refresh()
+	  	}
+
+	  	handler.bounds.extendWith(markers);
+	  	handler.fitMapToBounds();
+		});
+		</script>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	refresh = function(){
+		handler.buildMap({ provider: {  center: vanCenter ,   zoom: 12}, internal: {id: 'map'}}, function(){
+			if (document.getElementById('RC').checked)
+				handler.addKml({url:"https://drive.google.com/uc?export=download&id=0B2Gjc0uQJV7pcXFJVTk1N2VlaTQ"})
+			if (document.getElementById('OG').checked)
+				handler.addKml({url:"https://drive.google.com/uc?export=download&id=0B2Gjc0uQJV7pZXBwWjc3QVBiZFk"})
+			if (document.getElementById('FC').checked)
+				handler.addKml({url:"https://drive.google.com/uc?export=download&id=0B2Gjc0uQJV7pUGI1ZVZPTERqRmc"})
+		});
+	}
+</script>

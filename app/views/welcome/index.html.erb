@@ -1,21 +1,21 @@
-
+<% provide(:title, "HOME") %>
 <div class="center jumbotron">
 	<% if logged_in? %>
-		<div style='width: 800px;'>
-  			<div id="map" style='width: 1000px; height: 400px;'>
-  				<script>
-  				var vanCenter = new google.maps.LatLng(49.259209,-123.130437);
-  				handler = Gmaps.build('Google');
-				handler.buildMap({ provider: {  center: vanCenter ,   zoom: 12}, internal: {id: 'map'}}, function(){
-				  
-				  handler.bounds.extendWith(markers);
-				  handler.fitMapToBounds();
-				});
-				</script>
-  			</div>
-		</div>
+		<h1>Map with KML</h1>
+		
 
-		<br/>
+		<div class="check">
+		  <label><input type="checkbox" value="" id="RC" checked>Road Closures</label>
+		</div>
+		<div class="check">
+		  <label><input type="checkbox" value="" id="OG" checked>Ongoing Constructions</label>
+		</div>
+		<div class="check">
+		  <label><input type="checkbox" value="" id="FC" checked>Future Constructions</label>
+		</div>
+	
+		<%= render 'map_kml' %>
+		
 		<% if current_user.admin? %>
 			<%= link_to "LOAD THE DATA!", update_path, class: "btn btn-lg btn-primary"%>
 		<% end %>

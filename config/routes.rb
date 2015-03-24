@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get    'welcome' => 'welcome#index' #HOME
   get 'update' => 'welcome#update'
-  get    'help'    => 'welcome#help'
+  get    'map'    => 'welcome#map'
   get    'about'   => 'welcome#about'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'

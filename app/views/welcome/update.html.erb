@@ -10,7 +10,9 @@
       <%= "Link: " + d.link + "\n" %><br>
       <%= "Published: " + d.published.to_s + "\n" %><br>
       <%= "Updated: " + d.updated.to_s + "\n" %><br>
-      <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br><br>
+      <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
+      <br><br>
   <% end %>
 </div>
 <% k = retrieve_all("Upcoming Project") %><br>
@@ -23,7 +25,9 @@
       <%= "Link: " + d.link + "\n" %><br>
       <%= "Published: " + d.published.to_s + "\n" %><br>
       <%= "Updated: " + d.updated.to_s + "\n" %><br>
-      <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br><br>
+      <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
+      <br><br>
   <% end %>
 </div>
 <% k = retrieve_all("Road Closure") %><br>
@@ -36,6 +40,13 @@
       <%= "Link: " + d.link + "\n" %><br>
       <%= "Published: " + d.published.to_s + "\n" %><br>
       <%= "Updated: " + d.updated.to_s + "\n" %><br>
-      <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br><br>
+      <%= "Coordinates: " + d.coord.to_s + "\n" %>br><br>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
+      <br><br>
   <% end %>
 </div>
+<script>
+    var sLink = "H";
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+</script>
+

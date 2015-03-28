@@ -1,0 +1,12 @@
+//Adding Future Constructions Polylines in BLUE
+<% @FC.each do |fc| %>
+	fcPolyline = [];
+	<% for i in 0 ... (fc.coord.size/2)  %>
+  	latlng = {"lat":parseFloat(<%= fc.coord[2 * i] %>),"lng":parseFloat(<%= fc.coord[2 * i+1] %>)}
+  	fcPolyline.push(latlng)
+ 	
+<% end %>
+	handler.addPolyline(fcPolyline,{strokeColor: "#3232FF",strokeWeight: 4}); // and not addPolylines
+	handler.bounds.extend(fcPolyline[0]);
+	handler.bounds.extend(fcPolyline[ fcPolyline.length - 1]);
+<% end %>

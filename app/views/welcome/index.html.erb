@@ -1,31 +1,36 @@
 <% provide(:title, "HOME") %>
-<div class="center jumbotron">
-	<% if logged_in? %>
-		<h1>Map with KML</h1>
+<% if logged_in? %>
+		<h1 style="color:#D1D1D1">Map with KML</h1>
 		
+		<div style="position: relative;top:300px;left:-40px">
+			<div class="check">
+			  <label><input type="checkbox" value="" id="RC" checked>Road Closures</label>
+			</div>
+			<div class="check">
+			  <label><input type="checkbox" value="" id="OG" checked>Ongoing Constructions</label>
+			</div>
+			<div class="check">
+			  <label><input type="checkbox" value="" id="FC" checked>Future Constructions</label>
+			</div>
+		</div>
 
-		<div class="check">
-		  <label><input type="checkbox" value="" id="RC" checked>Road Closures</label>
-		</div>
-		<div class="check">
-		  <label><input type="checkbox" value="" id="OG" checked>Ongoing Constructions</label>
-		</div>
-		<div class="check">
-		  <label><input type="checkbox" value="" id="FC" checked>Future Constructions</label>
-		</div>
-	
 		<%= render 'map_kml' %>
 		
 		<% if current_user.admin? %>
-			<%= link_to "LOAD THE DATA!", update_path, class: "btn btn-lg btn-primary"%>
+		<br/>
+			<%= link_to "LOAD THE DATA!", update_path, style:"position: relative;left: 400px;",class: "btn btn-lg btn-success"%>
 		<% end %>
-	<% else %>
+		<body background="m.jpg">
+</body>
+<% else %>
+<div class="center jumbotron">
 	<h1>Welcome to Vancouver Construction Map</h1>
 	<p> Don't have an account? </p>
 	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+	<body background="1.jpg">
+	</body>
 	<% end %>
 </div>
-
 
 
 

@@ -9,11 +9,50 @@
 		var vanCenter = new google.maps.LatLng(49.259209,-123.130437);
 		handler = Gmaps.build('Google');
 		handler.buildMap({ provider: {  center: vanCenter ,   zoom: 12}, internal: {id: 'map'}}, function(){
-	  	
-	  	handler.bounds.extendWith(markers);
-	  	handler.fitMapToBounds();
+
+		//Adding Road Closure Polylines in RED
+	  	<% @RC.each do |rc| %>
+	  		rcPolyline = [];
+	  		<% for i in 0 ... (rc.coord.size/2)  %>
+			  	latlng = {"lat":parseFloat(<%= rc.coord[2 * i] %>),"lng":parseFloat(<%= rc.coord[2 * i+1] %>)}
+			  	rcPolyline.push(latlng)
+			 	
+			<% end %>
+			handler.addPolyline(rcPolyline,{strokeColor: "#FF0000",strokeWeight: 4}); // and not addPolylines
+			handler.bounds.extend(rcPolyline[0]);
+			handler.bounds.extend(rcPolyline[ rcPolyline.length - 1]);
+		<% end %>
+
+		//Adding Ongoing Construction Polylines in ORANGE
+		<% @OG.each do |og| %>
+	  		ogPolyline = [];
+	  		<% for i in 0 ... (og.coord.size/2)  %>
+			  	latlng = {"lat":parseFloat(<%= og.coord[2 * i] %>),"lng":parseFloat(<%= og.coord[2 * i+1] %>)}
+			  	ogPolyline.push(latlng)
+			 	
+			<% end %>
+			handler.addPolyline(ogPolyline,{strokeColor: "#EC9903",strokeWeight: 4}); // and not addPolylines
+			handler.bounds.extend(ogPolyline[0]);
+			handler.bounds.extend(ogPolyline[ ogPolyline.length - 1]);
+		<% end %>
+
+
+	  	//Adding Future Constructions Polylines in BLUE
+	  	<% @FC.each do |fc| %>
+	  		fcPolyline = [];
+	  		<% for i in 0 ... (fc.coord.size/2)  %>
+			  	latlng = {"lat":parseFloat(<%= fc.coord[2 * i] %>),"lng":parseFloat(<%= fc.coord[2 * i+1] %>)}
+			  	fcPolyline.push(latlng)
+			 	
+			<% end %>
+			handler.addPolyline(fcPolyline,{strokeColor: "#3232FF",strokeWeight: 4}); // and not addPolylines
+			handler.bounds.extend(fcPolyline[0]);
+			handler.bounds.extend(fcPolyline[ fcPolyline.length - 1]);
+		<% end %>
+
 		});
 		</script>
 	</div>
 </div>
 </div>
+

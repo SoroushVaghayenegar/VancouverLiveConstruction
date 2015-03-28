@@ -11,7 +11,10 @@ class WelcomeController < ApplicationController
   end
 
   def map
-    @OGs = IpConstruction.all
+    @RC = RcConstruction.all
+    @OG = IpConstruction.all
+    @FC = UpConstruction.all
+
   end
   
   def about

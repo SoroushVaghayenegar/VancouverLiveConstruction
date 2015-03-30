@@ -1,6 +1,30 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <nav>
+          <ul  class="nav navbar-nav navbar-left" style="display:inline;">
+            <li> <div style="top: margin: 0;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0, 50%)"><a class="twitter popup" href="http://twitter.com/share?text=Check%20road%20closures%20with%20VanConstructionApp">
+                        <img src="http://caribbeanpoetry.educ.cam.ac.uk/images/Home/twitterICON.png" width="26" height="26"></a>
+            </div>
+            </li>
+            <li> <div style="top: margin: 0;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(125%, 55%)">
+              <a class="facebook popup" href="http://www.facebook.com/sharer.php?u="><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-512.png" width="24" height="24"></a>
+              </div>
+            </li>
+            <li>
+              <div style="top: margin: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(250%, 55%)">
+                <a class="google+ popup" href="https://plus.google.com/share?url=[URL]"><img src="http://icons.iconarchive.com/icons/danleech/simple/512/google-plus-icon.png" width="24" height="24"></a>
+              </div>
+            </li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home",   root_path %></li>
             <% if logged_in? %>
@@ -29,3 +53,22 @@
         </nav>
       </div>
      </header>
+<script>
+    $('.popup').click(function(event) {
+        var width  = 575,
+                height = 400,
+                left   = ($(window).width()  - width)  / 2,
+                top    = ($(window).height() - height) / 2,
+                url    = this.href,
+                opts   = 'status=1' +
+                        ',width='  + width  +
+                        ',height=' + height +
+                        ',top='    + top    +
+                        ',left='   + left;
+
+        window.open(url, 'twitter', opts);
+
+        return false;
+    });
+</script>
+

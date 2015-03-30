@@ -1,19 +1,22 @@
 <% provide(:title, "MAP") %>
+	
 
-<div class="center jumbotron">
-	<h1>Map with GeoRSS</h1>
+	<h1 style="color:#D1D1D1">Map with GeoRSS</h1>
 	<br/>
-	<div class="center jumbotron" style='width: 800px;'>
-	<div id="map" style='width: 800px; height: 400px;'>
+	
+	<div id="map" style="width:1400px; height:700px; left: -120px;">
 		<script>
 		var vanCenter = new google.maps.LatLng(49.259209,-123.130437);
 		handler = Gmaps.build('Google');
 		handler.buildMap({ provider: {  center: vanCenter ,   zoom: 12}, internal: {id: 'map'}}, function(){
-	  	
-	  	handler.bounds.extendWith(markers);
-	  	handler.fitMapToBounds();
+	  		<%= render 'rc' %>
+	  		<%= render 'og' %>
+	  		<%= render 'fc' %>
 		});
 		</script>
 	</div>
-</div>
-</div>
+
+
+
+<body background="m.jpg">
+</body>

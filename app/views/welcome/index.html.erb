@@ -2,9 +2,8 @@
 <div class="center jumbotron">
 	<% if logged_in? %>
 		<h1>Map with KML</h1>
-		
 
-		<div class="check">
+      <div class="check">
 		  <label><input type="checkbox" value="" id="RC" checked>Road Closures</label>
 		</div>
 		<div class="check">
@@ -15,16 +14,20 @@
 		</div>
 	
 		<%= render 'map_kml' %>
-		
-		<% if current_user.admin? %>
+        <a class="twitter-timeline" href="https://twitter.com/CPSCBot" data-widget-id="581186757653356546" width="200px">Tweets by @CPSCBot</a>
+
+      <% if current_user.admin? %>
 			<%= link_to "LOAD THE DATA!", update_path, class: "btn btn-lg btn-primary"%>
 		<% end %>
-	<% else %>
+
+      <% else %>
 	<h1>Welcome to Vancouver Construction Map</h1>
 	<p> Don't have an account? </p>
 	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 	<% end %>
 </div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 
 
 

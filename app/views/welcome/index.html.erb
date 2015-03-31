@@ -1,9 +1,22 @@
 <% provide(:title, "HOME") %>
 <% if logged_in? %>
-		<h1 style="color:#D1D1D1">Map with KML</h1>
+		<h1 style='color:#E6E6E6'>Construction Map</h1><br/>
+	
 
-<div style="position: relative;left:-5%">
-    <div style="position: relative;top:300px;left:-40px">
+    <div>
+      <%= render 'map' %>
+      <div id="googleMap" style='width:1000px; height:700px;right: 40px'></div>
+    </div>
+    <% if current_user.admin? %>
+          <br/>
+          <%= link_to "LOAD THE DATA!", update_path, style:"position: relative;top:-100px;left:85%;",class: "btn btn-lg btn-success"%>
+      <% end %>
+		<div align="right" valign="top" style="position: relative;top:-767px;left:85%; width:200px; height:400px;">
+        	<a class="twitter-timeline" href="https://twitter.com/CPSCBot" data-widget-id="581186757653356546" width="200px">Tweets by @CPSCBot</a>
+
+    	</div>
+
+      	<div style='position: relative;top:-750px;left:85%; width:200px; height:400px;' >
 			<div class="check">
 			  <label><input type="checkbox" value="" id="RC" checked>Road Closures</label>
 			</div>
@@ -11,23 +24,11 @@
 			  <label><input type="checkbox" value="" id="OG" checked>Ongoing Constructions</label>
 			</div>
 			<div class="check">
-			  <label><input type="checkbox" value="" id="FC" checked>Future Constructions</label>
+			  <label><input type="checkbox" value="" id="FC" checked>Upcoming Constructions</label>
 			</div>
->   </div>
-    <div>
-      <%= render 'map_kml' %>
-      <% if current_user.admin? %>
-          <br/>
-          <%= link_to "LOAD THE DATA!", update_path, style:"position: relative;left: 400px;",class: "btn btn-lg btn-success"%>
-      <% end %>
-      <div align="right" valign="top" style="position: relative;top:-766px;left:18%">
-        <a class="twitter-timeline" href="https://twitter.com/CPSCBot" data-widget-id="581186757653356546" width="200px">Tweets by @CPSCBot</a>
-
-      </div>
-    </div>
-</div>
+   		</div>
 		<body background="m.jpg">
-</body>
+		</body>
 <% else %>
 <div class="center jumbotron">
 	<h1>Welcome to Vancouver Construction Map</h1>
@@ -38,7 +39,6 @@
 	<% end %>
 </div>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
 
 
 

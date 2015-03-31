@@ -5,6 +5,10 @@
 
 body {
   padding-top: 60px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover
 }
 
 section {
@@ -170,5 +174,9 @@ input {
 }
 
 .check{
-  color:white
+  color:white;
+  text-align: center;
+  border-style: solid;
+  border-width: medium;
+  border-color: #4C4C4C;
 }

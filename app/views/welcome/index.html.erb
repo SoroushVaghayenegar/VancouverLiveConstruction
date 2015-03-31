@@ -3,20 +3,20 @@
 		<h1 style='color:#E6E6E6'>Construction Map</h1><br/>
 	
 
-    <div>
       <%= render 'map' %>
-      <div id="googleMap" style='width:1000px; height:700px;right: 40px'></div>
-    </div>
+      <div id="googleMap"></div>
+    
     <% if current_user.admin? %>
           <br/>
-          <%= link_to "LOAD THE DATA!", update_path, style:"position: relative;top:-100px;left:85%;",class: "btn btn-lg btn-success"%>
-      <% end %>
-		<div align="right" valign="top" style="position: relative;top:-767px;left:85%; width:200px; height:400px;">
+          <%= link_to "LOAD THE DATA!", update_path, style:"position: relative;top: -710px;left:85%;",class: "btn btn-lg btn-success"%>
+          
+    <% end %>
+		<div align="right" valign="top" style="position: relative;top:-700px;left:85%; width:200px; height:400px;">
         	<a class="twitter-timeline" href="https://twitter.com/CPSCBot" data-widget-id="581186757653356546" width="200px">Tweets by @CPSCBot</a>
 
     	</div>
 
-      	<div style='position: relative;top:-750px;left:85%; width:200px; height:400px;' >
+      	<div id='checkbox_box'>
 			<div class="check">
 			  <label><input type="checkbox" value="" id="RC" checked>Road Closures</label>
 			</div>
@@ -30,15 +30,15 @@
 		<body background="m.jpg">
 		</body>
 <% else %>
-<div class="center jumbotron">
-	<h1>Welcome to Vancouver Construction Map</h1>
-	<p> Don't have an account? </p>
-	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+<div id='welcome_banner'>
+	<h1 id='banner_title'>Welcome to Vancouver Construction Map</h1>
+</div>
+<div id='signup'>
+	<p style="font-size:200%;"> Don't have an account? </p>
+	<%= link_to "Sign up now!", signup_path, style:"width: 400px;font-size: 250%;", class: "btn btn-lg btn-primary" %>
 	<body background="1.jpg">
 	</body>
 	<% end %>
 </div>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-
 

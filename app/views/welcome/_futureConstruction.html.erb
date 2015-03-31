@@ -18,7 +18,7 @@ var future_construction_array = [];
 	var infowindow = new google.maps.InfoWindow;
 
 	google.maps.event.addListener(Polyline, 'click', function(event) {
-	    infowindow.setContent("<h3 style='color:#3232FF;text-align: center'>Upcoming Construction</h3>"+
+	    infowindow.setContent("<h3 style='color:#3232FF;text-align: center'>Upcoming Construction</h3><hr>"+
 	    					  "<h4><%= fc.title %></h4>" +
 	    					  "<p><b>More details:</b> <a href=<%= fc.link %> >Click Here!</a></p>" + 
 	    					  '<p><b>Share -></b> <a class="twitter popup" href="http://twitter.com/share?text=FUTURE CONSTRUCTION: <%= fc.title %>">'+
@@ -46,8 +46,10 @@ var future_construction_array = [];
         return false;
     	});
     });
+	if (document.getElementById('FC').checked){
+    Polyline.setMap(map);
+  }
 	
-	Polyline.setMap(map);
 <% end %>
 
 document.getElementById('FC').onclick = function() {

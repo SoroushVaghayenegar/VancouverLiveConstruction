@@ -18,7 +18,7 @@ var road_Closure_array = [];
 	var infowindow = new google.maps.InfoWindow;
 
 	google.maps.event.addListener(Polyline, 'click', function(event) {
-	    infowindow.setContent("<h3 style='color:#CC2900;text-align: center'>Road Closure</h3>"+
+	    infowindow.setContent("<h3 style='color:#CC2900;text-align: center'>Road Closure</h3><hr>"+
 	    					  "<h4><%= rc.title %></h4>" + 
 	    					  "<p><b>Description:</b> <%= rc.description %></p>" +
 	    					  "<p><b>More details:</b> <a href=<%= rc.link %> >Click Here!</a></p>" + 
@@ -48,7 +48,9 @@ var road_Closure_array = [];
     	});
     });
 	
-	Polyline.setMap(map);
+	if (document.getElementById('RC').checked){
+    Polyline.setMap(map);
+  }
 <% end %>
 
 document.getElementById('RC').onclick = function() {

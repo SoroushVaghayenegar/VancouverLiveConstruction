@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
 
   before_action :logged_in_user, only: [:map]
   before_action :admin_user,     only: [:update]
+  helper_method :update
 
   include WelcomeHelper
   helper :all
@@ -56,4 +57,7 @@ class WelcomeController < ApplicationController
         flash[:danger] = "Sorry! You don't have access"
       end
     end
+
+
+
 end

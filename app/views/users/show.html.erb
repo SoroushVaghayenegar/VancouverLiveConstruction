@@ -6,7 +6,28 @@
        <%= gravatar_for @user %>
       <p><strong>Name:</strong> <%= @user.name %> </p>
       <p><strong>Username:</strong> <%= @user.username %> </p>
-    </section>
+    </section><br>
+    <div>
+      <ul>
+        <li style="display: inline">
+          <input type="checkbox" class="rc_checkbox" value="" id="RC" checked style = "position: relative; top: 18px; left: -200px">
+          <label for="checkbox">Road Closures</label>
+        </li>
+        <li  style="display: inline">
+          <div>
+          <input type="checkbox" class="og_checkbox" value="" id="OG" checked style = "position: relative; top: 18px; left: -200px">
+          <label for="checkbox">Ongoing Constructions</label>
+          </div>
+    </li>
+        <li  style="display: inline">
+          <input type="checkbox" class="fc_checkbox" value="" id="FC" checked style = "position: relative; top: 18px; left: -200px">
+          <label for="checkbox">Future Constructions</label>
+        </li>
+        <li style="display: inline">
+          <button class="save_pref">Save</button>
+        </li>
+      </ul>
+    </div>
     <%= button_to "Edit your profile", edit_user_path, :method => "get" , class: "btn btn-primary" %>
   </aside>
 </div>

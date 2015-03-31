@@ -1,3 +1,6 @@
 == Construction Dudes
 
 This ia a web app that shows the ongoing construtions in the city of vancouver
+
+TO RUN THE TESTS:
+ type 'rake test' in command line

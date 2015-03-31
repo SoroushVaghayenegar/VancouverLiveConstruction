@@ -1,19 +1,20 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <nav>
+          <% if logged_in? %>
           <ul  class="nav navbar-nav navbar-left" style="display:inline;">
             <li> <div style="top: margin: 0;
                     position: absolute;
                     top: 50%;
-                    transform: translate(0, 50%)"><a class="twitter popup" href="http://twitter.com/share?text=Check%20road%20closures%20with%20VanConstructionApp">
-                        <img src="http://caribbeanpoetry.educ.cam.ac.uk/images/Home/twitterICON.png" width="26" height="26"></a>
+                    transform: translate(0, 50%)"><a class="twitter popup" href="https://twitter.com/share?text=Check%20road%20closures%20with%20VanConstructionApp">
+                        <img src="https://caribbeanpoetry.educ.cam.ac.uk/images/Home/twitterICON.png" width="26" height="26"></a>
             </div>
             </li>
             <li> <div style="top: margin: 0;
                     position: absolute;
                     top: 50%;
                     transform: translate(125%, 55%)">
-              <a class="facebook popup" href="http://www.facebook.com/sharer.php?u="><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-512.png" width="24" height="24"></a>
+              <a class="facebook popup" href="https://www.facebook.com/sharer.php?u="><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-512.png" width="24" height="24"></a>
               </div>
             </li>
             <li>
@@ -21,14 +22,14 @@
                       position: absolute;
                       top: 50%;
                       transform: translate(250%, 55%)">
-                <a class="google+ popup" href="https://plus.google.com/share?url=[URL]"><img src="http://icons.iconarchive.com/icons/danleech/simple/512/google-plus-icon.png" width="24" height="24"></a>
+                <a class="google+ popup" href="https://plus.google.com/share?url=[URL]"><img src="https://icons.iconarchive.com/icons/danleech/simple/512/google-plus-icon.png" width="24" height="24"></a>
               </div>
             </li>
           </ul>
+          <% end %>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home",   root_path %></li>
             <% if logged_in? %>
-            <li><%= link_to "Map",   map_path %></li>
               <% if current_user.admin? %>
                 <li><%= link_to "Users", users_path %></li>
               <% end %>  

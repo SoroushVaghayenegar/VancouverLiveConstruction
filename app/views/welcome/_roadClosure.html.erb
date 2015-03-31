@@ -1,0 +1,66 @@
+var road_Closure_array = [];
+
+  <% @RC.each do |rc| %>
+  rcPolyline = [];
+	<% for i in 0 ... (rc.coord.size/2)  %>
+		rcPolyline.push(new google.maps.LatLng(parseFloat(<%= rc.coord[2 * i] %>),parseFloat(<%= rc.coord[2 * i+1] %>)))
+ 	<% end %>
+  	
+  	var Polyline = new google.maps.Polyline({
+  	path:rcPolyline,
+  	strokeColor:"#CC2900",
+  	strokeOpacity:1,
+  	strokeWeight:6
+	});
+	
+	road_Closure_array.push(Polyline);
+
+	var infowindow = new google.maps.InfoWindow;
+
+	google.maps.event.addListener(Polyline, 'click', function(event) {
+	    infowindow.setContent("<h3 style='color:#CC2900;text-align: center'>Road Closure</h3><hr>"+
+	    					  "<h4><%= rc.title %></h4>" + 
+	    					  "<p><b>Description:</b> <%= rc.description %></p>" +
+	    					  "<p><b>More details:</b> <a href=<%= rc.link %> >Click Here!</a></p>" + 
+	    					  '<p><b>Share -></b> <a class="twitter popup" href="https://twitter.com/share?text=ROAD CLOSURE: <%= rc.title %>">'+
+      							'<img src="https://caribbeanpoetry.educ.cam.ac.uk/images/Home/twitterICON.png" width="30" height="30"></a> '+
+      							'<a class="facebook popup" href="https://www.facebook.com/sharer.php?u=">'+
+      							'<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-512.png" width="30" height="30"></a> '+
+      							'<a class="google+ popup" href="https://plus.google.com/share?url=[URL]">'+
+      							'<img src="https://icons.iconarchive.com/icons/danleech/simple/512/google-plus-icon.png" width="30" height="30"></a> ');
+	    infowindow.setPosition(event.latLng);
+		infowindow.open(map);
+		$('.popup').click(function(event) {
+        var width  = 575,
+                height = 400,
+                left   = ($(window).width()  - width)  / 2,
+                top    = ($(window).height() - height) / 2,
+                url    = this.href,
+                opts   = 'status=1' +
+                        ',width='  + width  +
+                        ',height=' + height +
+                        ',top='    + top    +
+                        ',left='   + left;
+
+        window.open(url, 'twitter', opts);
+
+        return false;
+    	});
+    });
+	
+	if (document.getElementById('RC').checked){
+    Polyline.setMap(map);
+  }
+<% end %>
+
+document.getElementById('RC').onclick = function() {
+	if (this.checked){
+		for (i=0; i<road_Closure_array.length; i++){                           
+	    	road_Closure_array[i].setMap(map); 
+		}
+	}else{
+		for (i=0; i<road_Closure_array.length; i++){                           
+	    	road_Closure_array[i].setMap(null); 
+		}
+	}
+}

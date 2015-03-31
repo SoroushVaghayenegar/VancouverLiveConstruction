@@ -1,0 +1,33 @@
+<script>
+function initialize() {
+  var mapProp = {
+    center:new google.maps.LatLng(49.259209,-123.130437),
+    zoom:12,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  map.setOptions({styles: styles});
+
+  <%= render 'roadClosure' %>
+
+  <%= render 'ongoingConstruction' %>
+
+  <%= render 'futureConstruction' %>
+
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+var stavanger=new google.maps.LatLng(58.983991,5.734863);
+var amsterdam=new google.maps.LatLng(52.395715,4.888916);
+var london=new google.maps.LatLng(51.508742,-0.120850);
+
+var styles = [{"stylers":[{"hue":"#ff1a00"},{"invert_lightness":true},{"saturation":-100},{"lightness":33},{"gamma":0.5}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2D333C"}]}];
+</script>
+
+
+
+
+
+

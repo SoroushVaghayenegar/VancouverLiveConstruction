@@ -5,22 +5,20 @@ class WelcomeController < ApplicationController
   require 'nokogiri'
 
   before_action :logged_in_user, only: [:map]
+  before_action :admin_user,     only: [:update]
+  helper_method :update
 
   include WelcomeHelper
   helper :all
 
   def index
-  end
-
-  def map
     @RC = RcConstruction.all
     @OG = IpConstruction.all
     @FC = UpConstruction.all
-
   end
+
   
   def about
-
   end
 
 
@@ -51,4 +49,15 @@ class WelcomeController < ApplicationController
         redirect_to login_url
       end
     end
+
+# Confirms an admin user.
+    def admin_user
+      if not current_user.admin? 
+        redirect_to(root_url) 
+        flash[:danger] = "Sorry! You don't have access"
+      end
+    end
+
+
+
 end

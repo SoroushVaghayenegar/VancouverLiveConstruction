@@ -1,0 +1,65 @@
+var future_construction_array = [];
+
+  <% @FC.each do |fc| %>
+  fcPolyline = [];
+	<% for i in 0 ... (fc.coord.size/2)  %>
+		fcPolyline.push(new google.maps.LatLng(parseFloat(<%= fc.coord[2 * i] %>),parseFloat(<%= fc.coord[2 * i+1] %>)))
+ 	<% end %>
+  	
+  	var Polyline = new google.maps.Polyline({
+  	path:fcPolyline,
+  	strokeColor:"#3232FF",
+  	strokeOpacity:1,
+  	strokeWeight:6
+	});
+	
+	future_construction_array.push(Polyline);
+
+	var infowindow = new google.maps.InfoWindow;
+
+	google.maps.event.addListener(Polyline, 'click', function(event) {
+	    infowindow.setContent("<h3 style='color:#3232FF;text-align: center'>Upcoming Construction</h3><hr>"+
+	    					  "<h4><%= fc.title %></h4>" +
+	    					  "<p><b>More details:</b> <a href=<%= fc.link %> >Click Here!</a></p>" + 
+	    					  '<p><b>Share -></b> <a class="twitter popup" href="https://twitter.com/share?text=FUTURE CONSTRUCTION: <%= fc.title %>">'+
+      							'<img src="https://caribbeanpoetry.educ.cam.ac.uk/images/Home/twitterICON.png" width="30" height="30"></a> '+
+      							'<a class="facebook popup" href="https://www.facebook.com/sharer.php?u=">'+
+      							'<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-512.png" width="30" height="30"></a> '+
+      							'<a class="google+ popup" href="https://plus.google.com/share?url=[URL]">'+
+      							'<img src="https://icons.iconarchive.com/icons/danleech/simple/512/google-plus-icon.png" width="30" height="30"></a> ');
+	    infowindow.setPosition(event.latLng);
+		infowindow.open(map);
+		$('.popup').click(function(event) {
+        var width  = 575,
+                height = 400,
+                left   = ($(window).width()  - width)  / 2,
+                top    = ($(window).height() - height) / 2,
+                url    = this.href,
+                opts   = 'status=1' +
+                        ',width='  + width  +
+                        ',height=' + height +
+                        ',top='    + top    +
+                        ',left='   + left;
+
+        window.open(url, 'twitter', opts);
+
+        return false;
+    	});
+    });
+	if (document.getElementById('FC').checked){
+    Polyline.setMap(map);
+  }
+	
+<% end %>
+
+document.getElementById('FC').onclick = function() {
+	if (this.checked){
+		for (i=0; i<future_construction_array.length; i++){                           
+	    	future_construction_array[i].setMap(map); 
+		}
+	}else{
+		for (i=0; i<future_construction_array.length; i++){                           
+	    	future_construction_array[i].setMap(null); 
+		}
+	}
+}

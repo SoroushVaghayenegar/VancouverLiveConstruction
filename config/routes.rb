@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get    'table'   => 'welcome#table'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
+  get    'admin' => 'welcome#admin'
   post   'login'   => 'sessions#create'
   post   'delete_constr' => 'welcome#_delete'
   post   'pref' => 'users#_savePref'

@@ -40,10 +40,11 @@ $(function(){
 
 $(function(){
     $(".save_pref").click(function(){
-        var rc_pref = $('.rc_checkbox').prop('checked', true);
-        var og_pref = $('.og_checkbox').prop('checked', true);
-        var fc_pref = $('.fc_checkbox').prop('checked', true);
-        $(this).fadeOut(200)
+        $.ajax({
+            url: '/pref/',
+            type: 'POST',
+            data: {pref_ip: $('input[name="og_checkbox"]').is(":checked"), pref_up: $('input[name="fc_checkbox"]').is(":checked"), pref_rc: $('input[name="rc_checkbox"]').is(":checked"), user_id: $(this).attr('id')}
+        });
     });
 });
 

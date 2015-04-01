@@ -29,6 +29,9 @@
    		</div>
 		<body background="m.jpg">
 		</body>
+    <script>document.getElementById("RC").checked = <%= User.find_by(:id => current_user).pref_rc%>;
+    document.getElementById("OG").checked = <%= User.find_by(:id => current_user).pref_ip%>;
+    document.getElementById("FC").checked = <%= User.find_by(:id => current_user).pref_up%></script>
 <% else %>
 <div id='welcome_banner'>
 	<h1 id='banner_title'>Welcome to Vancouver Construction Map</h1>

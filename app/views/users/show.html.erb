@@ -8,24 +8,29 @@
       <p><strong>Username:</strong> <%= @user.username %> </p>
     </section><br>
     <div>
-      <ul>
-        <li style="display: inline">
-          <input type="checkbox" class="rc_checkbox" value="" id="RC" checked style = "position: relative; top: 18px; left: -200px">
-          <label for="checkbox">Road Closures</label>
+      <h4>Display Preferences:</h4>
+      <ul style="line-height: 1em; list-style-type: none">
+
+        <li  id="row_checkbox">
+              <input class = "text_b"  type="checkbox" name="rc_checkbox" value="" id="textbox_rc" checked disabled>
+              <label for="checkbox" id="label_tb">Road Closures</label>
         </li>
-        <li  style="display: inline">
+
+        <li id="row_checkbox">
           <div>
-          <input type="checkbox" class="og_checkbox" value="" id="OG" checked style = "position: relative; top: 18px; left: -200px">
+          <input class = "text_b"  type="checkbox" name="og_checkbox" value="" id="textbox_og" checked disabled>
           <label for="checkbox">Ongoing Constructions</label>
           </div>
-    </li>
-        <li  style="display: inline">
-          <input type="checkbox" class="fc_checkbox" value="" id="FC" checked style = "position: relative; top: 18px; left: -200px">
+        </li>
+
+        <li  id="row_checkbox">
+          <input class = "text_b" type="checkbox" name="fc_checkbox" value="" id="textbox_fc" checked disabled>
           <label for="checkbox">Future Constructions</label>
-        </li>
-        <li style="display: inline">
-          <button class="save_pref">Save</button>
-        </li>
+        </li><br>
+          <script>document.getElementById("textbox_rc").checked = <%= User.find_by(:id => current_user).pref_rc%>;
+          document.getElementById("textbox_og").checked = <%= User.find_by(:id => current_user).pref_ip%>;
+          document.getElementById("textbox_fc").checked = <%= User.find_by(:id => current_user).pref_up%></script>
+
       </ul>
     </div>
     <%= button_to "Edit your profile", edit_user_path, :method => "get" , class: "btn btn-primary" %>

@@ -2,15 +2,14 @@
 <% if logged_in? %>
 		<h1 style='color:#E6E6E6'>Construction Map</h1><br/>
 	
-
+		<p style="color:white;position: relative;left: -45px;">
+		    <b style="font-size:200%">Last Updated: </b><%= @time %>&nbsp;&nbsp;  
+			<img src="red.jpg" > Road Closure &nbsp;
+			<img src="orange.jpg" > Ongoing Construction &nbsp; 
+			<img src="blue.jpg" > Future Construction
+		</p>
       <%= render 'map' %>
       <div id="googleMap"></div>
-    
-    <% if current_user.admin? %>
-          <br/>
-          <%= link_to "LOAD THE DATA!", update_path, style:"position: relative;top: -710px;left:85%;",class: "btn btn-lg btn-success"%>
-          
-    <% end %>
 		<div align="right" valign="top" style="position: relative;top:-700px;left:85%; width:200px; height:400px;">
         	<a class="twitter-timeline" href="https://twitter.com/CPSCBot" data-widget-id="581186757653356546" width="200px">Tweets by @CPSCBot</a>
 
@@ -27,6 +26,10 @@
 			  <label><input type="checkbox" value="" id="FC" checked>Upcoming Constructions</label>
 			</div>
    		</div>
+   		<button class="btn btn-lg btn-success load_btn" style='position: relative;top:-670px;left:85%;'>
+          Refresh Data!
+        </button>
+        <div id="loading" style="display:none; text-align: center;position: relative;top:-668px;left:86%"><img src="http://stolenmx.com/wp-content/themes/load.gif" width="40px" height="40px" alt="Please Wait" /></div>
 		<body background="m.jpg">
 		</body>
     <script>document.getElementById("RC").checked = <%= User.find_by(:id => current_user).pref_rc%>;

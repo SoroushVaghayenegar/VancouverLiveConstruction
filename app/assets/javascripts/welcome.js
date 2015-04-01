@@ -1,7 +1,3 @@
-/**
- * Created by RYFFV on 30.03.15.
- */
-
 $(function(){
     $(".deleteIPConstr").click(function(){
         var elem_t = $(this).parent();
@@ -54,4 +50,14 @@ $(function(){
     });
 });
 
-
+$(function(){
+    $(".load_btn").click(function(){
+        $('#loading').css('display', 'inline');
+        $.ajax({
+            url: '/load_data/',
+            type: 'POST'
+        });
+        location.reload();
+    });
+    $('#loading').css('display', 'none');
+});

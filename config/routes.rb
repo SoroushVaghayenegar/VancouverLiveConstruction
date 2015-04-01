@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   get    'about'   => 'welcome#about'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
-  get    'admin' => 'welcome#admin'
+  get    'table' => 'welcome#table'
   post   'login'   => 'sessions#create'
   post   'delete_constr' => 'welcome#_delete'
   post   'pref' => 'users#_savePref'
+  post   'load_data' => 'welcome#_loadData'
   delete 'logout'  => 'sessions#destroy'
   resources :users, :ipconstructions, :upconstructions, :rcconstructions
 

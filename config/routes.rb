@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get    'update' => 'welcome#update'
   get    'map'    => 'welcome#map'
   get    'about'   => 'welcome#about'
+  get    'table'   => 'welcome#table'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

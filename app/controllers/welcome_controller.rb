@@ -11,11 +11,12 @@ class WelcomeController < ApplicationController
   include WelcomeHelper
   helper :all
 
+  $last_updated
   def index
     @RC = RcConstruction.all
     @OG = IpConstruction.all
     @FC = UpConstruction.all
-    @time = $last_updated.getutc
+    @time = RcConstruction.first.updated_at
   end
 
   
@@ -27,7 +28,6 @@ class WelcomeController < ApplicationController
     reset_db
     file = "http://vanmapp2.vancouver.ca/georss/roadahead_georss.xml"
     retrieve_and_store(file)
-    $last_updated = Time.now
   end
 
   def retrieve_and_store (file)

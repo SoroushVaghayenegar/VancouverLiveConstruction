@@ -55,9 +55,9 @@ $(function(){
         $('#loading').css('display', 'inline');
         $.ajax({
             url: '/load_data/',
-            type: 'POST'
+            type: 'POST',
+            success: location.reload()
         });
-        location.reload();
     });
     $('#loading').css('display', 'none');
 });

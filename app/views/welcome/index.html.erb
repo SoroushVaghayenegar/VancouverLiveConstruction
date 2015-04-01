@@ -3,7 +3,7 @@
 		<h1 style='color:#E6E6E6'>Construction Map</h1><br/>
 	
 		<p style="color:white;position: relative;left: -45px;">
-		    <b style="font-size:200%">Last Updated: </b><%= @time %>&nbsp;&nbsp;  
+		    <b style="font-size:200%">Last Updated: </b><%= @time.getutc unless nil %>&nbsp;&nbsp;  
 			<img src="red.jpg" > Road Closure &nbsp;
 			<img src="orange.png" > Ongoing Construction &nbsp; 
 			<img src="blue.png" > Future Construction

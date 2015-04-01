@@ -1,2 +1,108 @@
 <% provide(:title, "Update") %>
-<%= render 'data' %>
+<% k = retrieve_all("In Process") %>
+<h1 onclick="if (IP.style.display == 'block') {IP.style.display = 'none';} else {IP.style.display = 'block';}">In Process Constructions:</h1>
+<div id = "IP" style="display:none;">
+  <% k.each do |d| %>
+      <div>
+          <h4><%= d.title %></h4>
+          <tr>
+            <td>
+              <%= "Description: " + d.description + "\n" %><br>
+            </td>
+            <td>
+              <%= "ID: " + d.c_id + "\n" %><br>
+            </td>
+            <td>
+              <%= "Link: " + d.link + "\n" %><br>
+            </td>
+            <td>
+              <%= "Published: " + d.published.to_s + "\n" %><br>
+            </td>
+            <td>
+              <%= "Updated: " + d.updated.to_s + "\n" %><br>
+            </td>
+            <td>
+              <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
+            </td>
+            <td>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
+            </td>
+            <td><button id="<%= d.c_id %>" class="deleteIPConstr" style="position: relative; left:10px; top: -10px">Delete</button></td>
+          </tr>
+        <br><br>
+      </div>
+  <% end %>
+</div>
+<% k = retrieve_all("Upcoming Project") %><br>
+<h1 onclick="if (UP.style.display == 'block') {UP.style.display = 'none';} else {UP.style.display = 'block';}">Upcoming Project Constructions:</h1>
+<div id = "UP" style="display:none;">
+  <% k.each do |d| %>
+      <div>
+          <h4><%= d.title %></h4>
+          <tr>
+            <td>
+              <%= "Description: " + d.description + "\n" %><br>
+            </td>
+            <td>
+              <%= "ID: " + d.c_id + "\n" %><br>
+            </td>
+            <td>
+              <%= "Link: " + d.link + "\n" %><br>
+            </td>
+            <td>
+              <%= "Published: " + d.published.to_s + "\n" %><br>
+            </td>
+            <td>
+              <%= "Updated: " + d.updated.to_s + "\n" %><br>
+            </td>
+            <td>
+              <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
+            </td>
+            <td>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
+            </td>
+            <td><button id="<%= d.c_id %>" class="deleteUPConstr" style="position: relative; left:10px; top: -10px">Delete</button></td>
+          </tr>
+          <br><br>
+      </div>
+  <% end %>
+</div>
+<% k = retrieve_all("Road Closure") %><br>
+<h1 onclick="if (RC.style.display == 'block') {RC.style.display = 'none';} else {RC.style.display = 'block';}">Road Closure Constructions:</h1>
+<div id = "RC" style="display:none;">
+  <% k.each do |d| %>
+      <div>
+          <h4><%= d.title %></h4>
+          <tr>
+            <td>
+              <%= "Description: " + d.description + "\n" %><br>
+            </td>
+            <td>
+              <%= "ID: " + d.c_id + "\n" %><br>
+            </td>
+            <td>
+              <%= "Link: " + d.link + "\n" %><br>
+            </td>
+            <td>
+              <%= "Published: " + d.published.to_s + "\n" %><br>
+            </td>
+            <td>
+              <%= "Updated: " + d.updated.to_s + "\n" %><br>
+            </td>
+            <td>
+              <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
+            </td>
+            <td>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
+            </td>
+            <td><button id="<%= d.c_id %>" class="deleteRCConstr" style="position: relative; left:10px; top: -10px">Delete</button></td>
+          </tr>
+          <br><br>
+      </div>
+  <% end %>
+</div>
+<script>
+    var sLink = "H";
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+</script>
+

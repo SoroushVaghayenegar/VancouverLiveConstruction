@@ -26,8 +26,10 @@
 			  <label><input type="checkbox" value="" id="FC" checked>Upcoming Constructions</label>
 			</div>
    		</div>
-
-
+   		<button class="btn btn-lg btn-success load_btn" style='position: relative;top:-670px;left:85%;'>
+          Refresh Data!
+        </button>
+        <div id="loading" style="display:none; text-align: center;position: relative;top:-668px;left:86%"><img src="http://stolenmx.com/wp-content/themes/load.gif" width="40px" height="40px" alt="Please Wait" /></div>
 		<body background="m.jpg">
 		</body>
     <script>document.getElementById("RC").checked = <%= User.find_by(:id => current_user).pref_rc%>;

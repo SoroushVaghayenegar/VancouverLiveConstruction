@@ -20,12 +20,12 @@
     <button class="btn btn-primary rc_butt" type="button">
       Road Closure <span class="badge badge_rc"><%=(k_rc).length%></span>
     </button>
-    <% if current_user.admin? %>
+    
         <br>
         <button class="btn btn-lg btn-success load_btn">
-          LOAD THE DATA!
+          Refresh Data!
         </button>
-    <% end %>
+        <div id="loading" style="display:none; text-align: center;"><img src="http://stolenmx.com/wp-content/themes/load.gif" width="40px" height="40px" alt="Please Wait" /></div>
   </div>
 </div>
 <body>

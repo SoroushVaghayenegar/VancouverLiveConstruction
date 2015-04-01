@@ -11,10 +11,12 @@ class WelcomeController < ApplicationController
   include WelcomeHelper
   helper :all
 
+  $last_updated
   def index
     @RC = RcConstruction.all
     @OG = IpConstruction.all
     @FC = UpConstruction.all
+    @time = RcConstruction.first.updated_at
   end
 
   

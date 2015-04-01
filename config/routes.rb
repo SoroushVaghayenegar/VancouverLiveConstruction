@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get    'about'   => 'welcome#about'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
+  get    'admin' => 'welcome#admin'
   post   'login'   => 'sessions#create'
   post   'delete_constr' => 'welcome#_delete'
   post   'pref' => 'users#_savePref'

@@ -10,6 +10,8 @@ $(function(){
             type: 'POST',
             data: {c_id: $(this).attr('id'), type: "IP"}
         });
+        var i_count = +($(".badge_ip").text());
+        $(".badge_ip").text(i_count-1);
         $(elem_t).fadeOut(300);
     });
 });
@@ -22,6 +24,8 @@ $(function(){
             type: 'POST',
             data: {c_id: $(this).attr('id'), type: "UP"}
         });
+        var i_count = +($(".badge_up").text());
+        $(".badge_up").text(i_count-1);
         $(elem_t).fadeOut(300);
     });
 });
@@ -34,6 +38,8 @@ $(function(){
             type: 'POST',
             data: {c_id: $(this).attr('id'), type: "RC"}
         });
+        var i_count = +($(".badge_rc").text());
+        $(".badge_rc").text(i_count-1);
         $(elem_t).fadeOut(300);
     });
 });

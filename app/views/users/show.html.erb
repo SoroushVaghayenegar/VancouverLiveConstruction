@@ -6,7 +6,33 @@
        <%= gravatar_for @user %>
       <p><strong>Name:</strong> <%= @user.name %> </p>
       <p><strong>Username:</strong> <%= @user.username %> </p>
-    </section>
+    </section><br>
+    <div>
+      <h4>Display Preferences:</h4>
+      <ul style="line-height: 1em; list-style-type: none">
+
+        <li  id="row_checkbox">
+              <input class = "text_b"  type="checkbox" name="rc_checkbox" value="" id="textbox_rc" checked disabled>
+              <label for="checkbox" id="label_tb">Road Closures</label>
+        </li>
+
+        <li id="row_checkbox">
+          <div>
+          <input class = "text_b"  type="checkbox" name="og_checkbox" value="" id="textbox_og" checked disabled>
+          <label for="checkbox">Ongoing Constructions</label>
+          </div>
+        </li>
+
+        <li  id="row_checkbox">
+          <input class = "text_b" type="checkbox" name="fc_checkbox" value="" id="textbox_fc" checked disabled>
+          <label for="checkbox">Future Constructions</label>
+        </li><br>
+          <script>document.getElementById("textbox_rc").checked = <%= User.find_by(:id => current_user).pref_rc%>;
+          document.getElementById("textbox_og").checked = <%= User.find_by(:id => current_user).pref_ip%>;
+          document.getElementById("textbox_fc").checked = <%= User.find_by(:id => current_user).pref_up%></script>
+
+      </ul>
+    </div>
     <%= button_to "Edit your profile", edit_user_path, :method => "get" , class: "btn btn-primary" %>
   </aside>
 </div>

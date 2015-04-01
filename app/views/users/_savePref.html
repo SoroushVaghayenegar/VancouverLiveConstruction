@@ -1,0 +1,9 @@
+<%
+    user = User.find_by(:id => params[:user_id])
+    if (user != nil)
+        user.pref_ip = params[:pref_ip]
+        user.pref_up = params[:pref_up]
+        user.pref_rc = params[:pref_rc]
+        user.save
+    end
+%>

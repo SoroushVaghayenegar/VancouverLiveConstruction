@@ -9,4 +9,7 @@ User.create!(name:  "Soroush",
              username: "soroush",
              password:              "123",
              password_confirmation: "123",
-             admin: true)
+             admin: true,
+             pref_ip: true,
+             pref_up: false,
+             pref_rc: false)

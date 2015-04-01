@@ -42,6 +42,17 @@ module WelcomeHelper
 
   end
 
+  def delete_constr(c_id, type)
+    case type
+      when "IP"
+        delete_IPConstr(c_id)
+      when "UP"
+        delete_UPConstr(c_id)
+      when "RC"
+        delete_RCConstr(c_id)
+    end
+  end
+
   def delete_IPConstr(c_id)
 
     if ((c_id != "") & !(IpConstruction.where(:c_id => c_id).blank?))

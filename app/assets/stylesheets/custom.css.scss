@@ -216,3 +216,33 @@ input {
   color:white;
   text-align: center;
 }
+
+.text_b{
+  position: relative;
+  width: 10px;
+  top: 0px;
+  left: -8px
+}
+
+#label_tb{
+  position: static;
+  width: 200px;
+  height: 20px;
+  font-size: 14px;
+  font-style: inherit;
+}
+
+#check_head{
+  position:relative;
+  font-size: 22px;
+  font-style: normal;
+}
+
+#row_checkbox{
+  height: 27px
+}
+
+.save_pref{
+  width: 300px;
+}
+

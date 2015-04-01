@@ -16,10 +16,11 @@ class WelcomeController < ApplicationController
     @RC = RcConstruction.all
     @OG = IpConstruction.all
     @FC = UpConstruction.all
-    @time = RcConstruction.first.updated_at
+    @time = getTime
   end
 
-  
+
+
   def about
   end
 
@@ -42,7 +43,7 @@ class WelcomeController < ApplicationController
     end
   end
 
-
+private
 # Confirms a logged-in user.
     def logged_in_user
       unless logged_in?
@@ -60,6 +61,13 @@ class WelcomeController < ApplicationController
       end
     end
 
+    def getTime
+      if(RcConstruction.any?)
+        RcConstruction.first.updated_at.getutc
+      else
+        "Admin hasn't updated the Database yet!"
+      end
+    end
 
 
 end

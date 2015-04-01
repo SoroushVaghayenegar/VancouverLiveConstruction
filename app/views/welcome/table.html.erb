@@ -58,9 +58,6 @@
                   <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
                 </td>
             <% end %>
-            <td>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
-            </td>
             <% if current_user.admin? %>
                 <td><button id="<%= d.c_id %>" class="deleteIPConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
             <% end %>
@@ -98,9 +95,6 @@
                   <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
                 </td>
             <% end %>
-            <td>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
-            </td>
             <% if current_user.admin? %>
                 <td><button id="<%= d.c_id %>" class="deleteUPConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
             <% end %>
@@ -138,9 +132,6 @@
                   <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
                 </td>
             <% end %>
-            <td>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
-            </td>
             <% if current_user.admin? %>
                 <td><button id="<%= d.c_id %>" class="deleteRCConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
             <% end %>

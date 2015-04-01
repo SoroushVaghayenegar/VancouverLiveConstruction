@@ -2,7 +2,12 @@
 <% if logged_in? %>
 		<h1 style='color:#E6E6E6'>Construction Map</h1><br/>
 	
-
+		<p style="color:white;position: relative;left: -45px;">
+		    <b style="font-size:200%">Last Updated: </b><%= @time %>&nbsp;&nbsp;  
+			<img src="red.jpg" > Road Closure &nbsp;
+			<img src="orange.png" > Ongoing Construction &nbsp; 
+			<img src="blue.png" > Future Construction
+		</p>
       <%= render 'map' %>
       <div id="googleMap"></div>
     
@@ -27,6 +32,8 @@
 			  <label><input type="checkbox" value="" id="FC" checked>Upcoming Constructions</label>
 			</div>
    		</div>
+
+
 		<body background="m.jpg">
 		</body>
     <script>document.getElementById("RC").checked = <%= User.find_by(:id => current_user).pref_rc%>;

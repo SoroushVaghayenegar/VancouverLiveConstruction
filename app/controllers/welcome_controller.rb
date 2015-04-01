@@ -15,6 +15,7 @@ class WelcomeController < ApplicationController
     @RC = RcConstruction.all
     @OG = IpConstruction.all
     @FC = UpConstruction.all
+    @time = $last_updated.getutc
   end
 
   
@@ -26,6 +27,7 @@ class WelcomeController < ApplicationController
     reset_db
     file = "http://vanmapp2.vancouver.ca/georss/roadahead_georss.xml"
     retrieve_and_store(file)
+    $last_updated = Time.now
   end
 
   def retrieve_and_store (file)

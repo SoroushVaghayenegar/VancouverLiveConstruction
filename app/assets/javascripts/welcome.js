@@ -1,6 +1,7 @@
 $(function(){
     $(".deleteIPConstr").click(function(){
         var elem_t = $(this).parent();
+        $(this).prop('disabled', true);
         $.ajax({
             url: '/delete_constr/',
             type: 'POST',
@@ -15,6 +16,7 @@ $(function(){
 $(function(){
     $(".deleteUPConstr").click(function(){
         var elem_t = $(this).parent();
+        $(this).prop('disabled', true);
         $.ajax({
             url: '/delete_constr/',
             type: 'POST',
@@ -29,6 +31,7 @@ $(function(){
 $(function(){
     $(".deleteRCConstr").click(function(){
         var elem_t = $(this).parent();
+        $(this).prop('disabled', true);
         $.ajax({
             url: '/delete_constr/',
             type: 'POST',
@@ -53,10 +56,13 @@ $(function(){
 $(function(){
     $(".load_btn").click(function(){
         $('#loading').css('display', 'inline');
+        $(this).prop('disabled', true);
         $.ajax({
             url: '/load_data/',
             type: 'POST',
-            success: location.reload()
+            success: function(){
+                location.reload();
+            }
         });
     });
     $('#loading').css('display', 'none');

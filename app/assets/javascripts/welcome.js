@@ -57,6 +57,9 @@ $(function(){
     $(".load_btn").click(function(){
         $('#loading').css('display', 'inline');
         $(this).prop('disabled', true);
+        $(".deleteIPConstr").prop('disabled', true);
+        $(".deleteUPConstr").prop('disabled', true);
+        $(".deleteRCConstr").prop('disabled', true);
         $.ajax({
             url: '/load_data/',
             type: 'POST',

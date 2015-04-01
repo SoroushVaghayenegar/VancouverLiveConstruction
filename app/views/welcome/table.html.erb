@@ -1,136 +1,158 @@
-<% provide(:title, "Construction Table") %>
+<!DOCTYPE html>
 <% k_ip = retrieve_all("In Process") %>
 <% k_rc = retrieve_all("Road Closure") %>
 <% k_up = retrieve_all("Upcoming Project") %>
 <h1 style='font-size:500%; background-color:rgba(192,192,192,0.7); color:black'>Table Of Construction Data</h1>
 <h3 style='text-align:center;font-size:200%;color:red'>Click on each construction type to get more info or share them on Twitter!</h3>
-
-
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
 <div id="admin_butts">
-    <div class="btn-group-vertical" role="group" >
-        <button class="btn btn-primary ip_butt" type="button">
-            In Process <span class="badge badge_ip"><%=(k_ip).length%></span>
+  <div class="btn-group-vertical" role="group" >
+    <button class="btn btn-primary ip_butt" type="button">
+      In Process <span class="badge badge_ip"><%=(k_ip).length%></span>
+    </button>
+    <button class="btn btn-primary up_butt" type="button">
+      Upcoming Projects <span class="badge badge_up"><%=(k_up).length%></span>
+    </button>
+    <button class="btn btn-primary rc_butt" type="button">
+      Road Closure <span class="badge badge_rc"><%=(k_rc).length%></span>
+    </button>
+    <% if current_user.admin? %>
+        <br>
+        <button class="btn btn-lg btn-success load_btn">
+          LOAD THE DATA!
         </button>
-        <button class="btn btn-primary up_butt" type="button">
-            Upcoming Projects <span class="badge badge_up"><%=(k_up).length%></span>
-        </button>
-        <button class="btn btn-primary rc_butt" type="button">
-            Road Closure <span class="badge badge_rc"><%=(k_rc).length%></span>
-        </button>
-    </div>
+    <% end %>
+  </div>
 </div>
 <body>
 <div class="constr_info">
-    <div id = "IP" style="display:none;">
-        <h1>In Process</h1>
-        <% k_ip.each do |d| %>
+  <div id = "IP" style="display:block;">
+    <h1>In Process</h1>
+    <% k_ip.each do |d| %>
         <div>
-            <h4><%= d.title %></h4>
-            <tr>
+          <h4><%= d.title %></h4>
+          <tr>
+            <td>
+              <%= "Description: " + d.description + "\n" %><br>
+            </td>
+            <% if current_user.admin? %>
                 <td>
-                    <%= "Description: " + d.description + "\n" %><br>
+                  <%= "ID: " + d.c_id + "\n" %><br>
                 </td>
+            <% end %>
+            <td>
+              Link: <%= link_to nil, "#{d.link}" %><br>
+            </td>
+            <td>
+              <%= "Published: " + d.published.to_s + "\n" %><br>
+            </td>
+            <td>
+              <%= "Updated: " + d.updated.to_s + "\n" %><br>
+            </td>
+            <% if current_user.admin? %>
                 <td>
-                    <%= "ID: " + d.c_id + "\n" %><br>
+                  <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
                 </td>
-                <td>
-                    <%= "Link: " + d.link + "\n" %><br>
-                </td>
-                <td>
-                    <%= "Published: " + d.published.to_s + "\n" %><br>
-                </td>
-                <td>
-                    <%= "Updated: " + d.updated.to_s + "\n" %><br>
-                </td>
-
-                <td>
-                    <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
-                </td>
-                <td>
-                  <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
-                </td>
-                <% if current_user.admin? %>
-                    <td><button id="<%= d.c_id %>" class="deleteIPConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
-                <% end %>
-            </tr>
-            <br><br>
+            <% end %>
+            <td>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
+            </td>
+            <% if current_user.admin? %>
+                <td><button id="<%= d.c_id %>" class="deleteIPConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
+            <% end %>
+          </tr>
+          <br><br>
         </div>
-        <% end %>
-    </div>
+    <% end %>
+  </div>
 
-    <div id = "UP" style="display:none;">
-        <h1>Upcoming Projects</h1>
-        <% k_up.each do |d| %>
+  <div id = "UP" style="display:none;">
+    <h1>Upcoming Projects</h1>
+    <% k_up.each do |d| %>
         <div>
-            <h4><%= d.title %></h4>
-            <tr>
+          <h4><%= d.title %></h4>
+          <tr>
+            <td>
+              <%= "Description: " + d.description + "\n" %><br>
+            </td>
+            <% if current_user.admin? %>
                 <td>
-                    <%= "Description: " + d.description + "\n" %><br>
+                  <%= "ID: " + d.c_id + "\n" %><br>
                 </td>
+            <% end %>
+            <td>
+              Link: <%= link_to nil, "#{d.link}" %><br>
+            </td>
+            <td>
+              <%= "Published: " + d.published.to_s + "\n" %><br>
+            </td>
+            <td>
+              <%= "Updated: " + d.updated.to_s + "\n" %><br>
+            </td>
+            <% if current_user.admin? %>
                 <td>
-                    <%= "ID: " + d.c_id + "\n" %><br>
+                  <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
                 </td>
-                <td>
-                    <%= "Link: " + d.link + "\n" %><br>
-                </td>
-                <td>
-                    <%= "Published: " + d.published.to_s + "\n" %><br>
-                </td>
-                <td>
-                    <%= "Updated: " + d.updated.to_s + "\n" %><br>
-                </td>
-                <td>
-                    <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
-                </td>
-                <td>
-                  <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
-                </td>
-                <% if current_user.admin? %>
-                    <td><button id="<%= d.c_id %>" class="deleteUPConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
-                <% end %>
-            </tr>
-            <br><br>
+            <% end %>
+            <td>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
+            </td>
+            <% if current_user.admin? %>
+                <td><button id="<%= d.c_id %>" class="deleteUPConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
+            <% end %>
+          </tr>
+          <br><br>
         </div>
-        <% end %>
-    </div>
+    <% end %>
+  </div>
 
-    <div id = "RC" style="display:none;">
-        <h1>Road Closures</h1>
-        <% k_rc.each do |d| %>
+  <div id = "RC" style="display:none;">
+    <h1>Road Closures</h1>
+    <% k_rc.each do |d| %>
         <div>
-            <h4><%= d.title %></h4>
-            <tr>
+          <h4><%= d.title %></h4>
+          <tr>
+            <td>
+              <%= "Description: " + d.description + "\n" %><br>
+            </td>
+            <% if current_user.admin? %>
                 <td>
-                    <%= "Description: " + d.description + "\n" %><br>
+                  <%= "ID: " + d.c_id + "\n" %><br>
                 </td>
+            <% end %>
+            <td>
+              Link: <%= link_to nil, "#{d.link}" %><br>
+            </td>
+            <td>
+              <%= "Published: " + d.published.to_s + "\n" %><br>
+            </td>
+            <td>
+              <%= "Updated: " + d.updated.to_s + "\n" %><br>
+            </td>
+            <% if current_user.admin? %>
                 <td>
-                    <%= "ID: " + d.c_id + "\n" %><br>
+                  <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
                 </td>
-                <td>
-                    <%= "Link: " + d.link + "\n" %><br>
-                </td>
-                <td>
-                    <%= "Published: " + d.published.to_s + "\n" %><br>
-                </td>
-                <td>
-                    <%= "Updated: " + d.updated.to_s + "\n" %><br>
-                </td>
-                <td>
-                    <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
-                </td>
-                <td>
-                  <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
-                </td>
-                <% if current_user.admin? %>
-                    <td><button id="<%= d.c_id %>" class="deleteRCConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
-                <% end %>
-            </tr>
-            <br><br>
+            <% end %>
+            <td>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url=<%= d.link %> data-size="large" data-count="none" data-text="<%=d.title%>" data-hashtags="VanConstructionApp">Tweet</a>
+            </td>
+            <% if current_user.admin? %>
+                <td><button id="<%= d.c_id %>" class="deleteRCConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
+            <% end %>
+          </tr>
+          <br><br>
         </div>
-        <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>
 <script>
     var sLink = "H";
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 </script>
+</body>
+</html>

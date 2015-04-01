@@ -10,12 +10,6 @@
 		</p>
       <%= render 'map' %>
       <div id="googleMap"></div>
-    
-    <% if current_user.admin? %>
-          <br/>
-          <%= link_to "LOAD THE DATA!", update_path, style:"position: relative;top: -710px;left:85%;",class: "btn btn-lg btn-success"%>
-          
-    <% end %>
 		<div align="right" valign="top" style="position: relative;top:-700px;left:85%; width:200px; height:400px;">
         	<a class="twitter-timeline" href="https://twitter.com/CPSCBot" data-widget-id="581186757653356546" width="200px">Tweets by @CPSCBot</a>
 

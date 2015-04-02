@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
   require 'open-uri'
   require 'zip'
   require 'nokogiri'
+  require 'uri'
 
   before_action :logged_in_user, only: [:map]
   before_action :admin_user,     only: [:update]

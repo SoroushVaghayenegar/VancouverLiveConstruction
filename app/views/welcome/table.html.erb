@@ -33,7 +33,7 @@
   <div id = "IP" style="display:block;">
     <h1>In Process</h1>
     <% k_ip.each do |d| %>
-        <div>
+        <div class="div_constr_entry">
           <h4><%= d.title %></h4>
           <tr>
             <td>
@@ -58,6 +58,10 @@
                   <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
                 </td>
             <% end %>
+            <td><br>
+              <a class="twitter_table popup" href="https://twitter.com/share?text=ONGOING%20CONSTRUCTION:%20<%= URI.escape((d.title).gsub("&","and")) %>&url=<%= URI.escape(d.link) %>">
+                <img src="http://blog.e-advertising.co/wp-content/uploads/2015/01/1420214358754760.jpg" width="78" height="34"></a>
+            </td>
             <% if current_user.admin? %>
                 <td><button id="<%= d.c_id %>" class="deleteIPConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
             <% end %>
@@ -95,6 +99,10 @@
                   <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
                 </td>
             <% end %>
+            <td><br>
+              <a class="twitter_table popup" href="https://twitter.com/share?text=FUTURE%20CONSTRUCTION:%20<%= URI.escape((d.title).gsub("&","and")) %>&url=<%= URI.escape(d.link) %>">
+                <img src="http://blog.e-advertising.co/wp-content/uploads/2015/01/1420214358754760.jpg" width="78" height="34"></a>
+            </td>
             <% if current_user.admin? %>
                 <td><button id="<%= d.c_id %>" class="deleteUPConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
             <% end %>
@@ -132,6 +140,10 @@
                   <%= "Coordinates: " + d.coord.to_s + "\n" %><br><br>
                 </td>
             <% end %>
+            <td><br>
+              <a class="twitter_table popup" href="https://twitter.com/share?text=ROAD%20CLOSURE:%20<%= URI.escape((d.title).gsub("&","and")) %>&url=<%= URI.escape(d.link) %>">
+                <img src="http://blog.e-advertising.co/wp-content/uploads/2015/01/1420214358754760.jpg" width="78" height="34"></a>
+            </td>
             <% if current_user.admin? %>
                 <td><button id="<%= d.c_id %>" class="deleteRCConstr btn btn-danger" style="width:80px; position: relative; left:10px; top: -10px">Delete</button></td>
             <% end %>
@@ -142,8 +154,22 @@
   </div>
 </div>
 <script>
-    var sLink = "H";
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    $('.popup').click(function(event) {
+        var width  = 575,
+                height = 400,
+                left   = ($(window).width()  - width)  / 2,
+                top    = ($(window).height() - height) / 2,
+                url    = this.href,
+                opts   = 'status=1' +
+                        ',width='  + width  +
+                        ',height=' + height +
+                        ',top='    + top    +
+                        ',left='   + left;
+
+        window.open(url, 'twitter', opts);
+
+        return false;
+    });
 </script>
 </body>
 </html>

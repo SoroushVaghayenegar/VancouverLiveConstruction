@@ -70,3 +70,14 @@ $(function(){
     });
     $('#loading').css('display', 'none');
 });
+
+/*$(function(){
+    $( ".div_constr_entry" ).hover(function() {
+        $(this).css('backgroundColor','#F0F0F0');
+        $(document.createElement("div")).attr("class", "twitter-share-button", "href", "https://twitter.com/share", "data-url", "<%= d.link %>").appendTo($(this));
+    }, function() {
+            $(this).css('backgroundColor','white')
+        }
+    );
+});*/
+

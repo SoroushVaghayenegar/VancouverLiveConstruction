@@ -64,7 +64,7 @@ private
 
     def getTime
       if(RcConstruction.any?)
-        RcConstruction.first.updated_at.getutc
+        RcConstruction.first.updated_at.getutc.in_time_zone("Pacific Time (US & Canada)").strftime('%a, %d %b %Y %H:%M:%S')
       else
         "Admin hasn't updated the Database yet!"
       end

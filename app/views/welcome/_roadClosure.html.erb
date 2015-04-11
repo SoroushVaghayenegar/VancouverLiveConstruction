@@ -20,7 +20,6 @@ var road_Closure_array = [];
 	google.maps.event.addListener(Polyline, 'click', function(event) {
 	    infowindow.setContent("<h3 style='color:#CC2900;text-align: center'>Road Closure</h3><hr>"+
 	    					  "<h4><%= rc.title %></h4>" + 
-	    					  "<p><b>Description:</b> <%= rc.description %></p>" +
 	    					  "<p><b>More details:</b> <a href=<%= rc.link %> >Click Here!</a></p>" + 
 	    					  '<p><b>Share -></b> <a class="twitter popup" href="https://twitter.com/share?text=ROAD CLOSURE: <%= rc.title %>">'+
       							'<img src="https://caribbeanpoetry.educ.cam.ac.uk/images/Home/twitterICON.png" width="30" height="30"></a> '+

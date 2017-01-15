@@ -1,6 +1,13 @@
-== Construction Dudes
+# Vancouver live ongoing road closures and constructions
 
-This ia a web app that shows the ongoing construtions in the city of vancouver
+A web-application that shows the live ongoing road closures, current constructions and future constructions happening in the city of Vancouver. The constructions are shown using Google Maps API.
 
-TO RUN THE TESTS:
- type 'rake test' in command line
+## Languages used:
+```
+Ruby on Rails(Framework)
+Ruby
+Javascript
+JQuery
+HTML
+CSS
+```

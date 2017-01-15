@@ -32,7 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rubyzip', '~> 1.1.7'
-gem 'nokogiri'
+
 
 group :development, :test do
   gem 'sqlite3'
